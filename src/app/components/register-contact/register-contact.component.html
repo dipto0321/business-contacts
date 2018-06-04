@@ -1,0 +1,42 @@
+<form class="form">
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="Company" [value]="" #company>
+  </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Select Category" #selectedCategory>
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+                {{ category.name }}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="number" placeholder="Years In Business" [value]="" #years_in_business/>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="Decription" #describ></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="tel" placeholder="Phone" [value]="" #phone>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="email" placeholder="Email" [value]="" #email>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="text" placeholder="Street" [value]="" #street>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="text" placeholder="City" [value]="" #city>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="text" placeholder="State" [value]="" #state>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <input matInput="text" placeholder="Zipcode/Postal Code" [value]="" #zipcode>
+    </mat-form-field>
+
+    <button mat-button mat-raised-button color="warn" (click)="goBack('default')"> CANCEL </button>
+    <button mat-button mat-raised-button style="margin-left: 15px;" (click)="addNewBusiness(company.value, selectedCategory.value, years_in_business.value, describ.value, phone.value, email.value, street.value, city.value, state.value, zipcode.value)"> SUBMIT </button>
+
+
+
+</form>

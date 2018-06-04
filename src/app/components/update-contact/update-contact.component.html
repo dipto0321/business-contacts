@@ -1,0 +1,43 @@
+<form class="form">
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="Company"  #company [(ngModel)]="activeCompany" name="activeCompany">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Select Category" #selectedCategory [(ngModel)]="activeCategory" [ngModelOptions]="{standalone: true}">
+      <mat-option *ngFor="let category of categories" [value]="category.name">
+        {{ category.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width">
+    <input matInput="number" placeholder="Years In Business" #years_in_business [(ngModel)]="activeYears_in_business" name="activeYears_in_business"/>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Decription" #describ [(ngModel)]="activeDescription" name="activeDescription"></textarea>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="tel" placeholder="Phone" #phone [(ngModel)]="activePhone" name="activePhone">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="email" placeholder="Email"  #email [(ngModel)]="activeEmail" name="activeEmail">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="Street"  #street [(ngModel)]="activeStreet_adress" name="activeStreet_adress">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="City"  #city [(ngModel)]="activeCity" name="activeCity">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="State"  #state [(ngModel)]="activeState" name="activeState">
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput="text" placeholder="Zipcode/Postal Code" [value]="" #zipcode [(ngModel)]="activeZipcode" name="activeCategory">
+  </mat-form-field>
+
+  <button mat-button mat-raised-button color="warn" (click)="goBack('default')"> CANCEL </button>
+  <button mat-button mat-raised-button style="margin-left: 15px;" (click)="updateContacts()"> SAVE CHANGES </button>
+
+
+
+</form>

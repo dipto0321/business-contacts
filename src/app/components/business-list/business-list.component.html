@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-header>
+    <div *ngIf="appState === 'default'" style="position: relative">
+      <button mat-raised-button matTooltip="Add Contacts" color="accent" (click)="changeState('add')"><mat-icon>add</mat-icon></button>
+
+      <div style="width: 20%; position: absolute; left: 1164px; top: -14px;">
+        <mat-form-field>
+          <mat-select placeholder="Filter by Category" (valueChange)="filterCategory(filteredCategory.value)" #filteredCategory>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-title style="text-align: center;">
+    {{cardTitle}}
+  </mat-card-title>
+  <mat-card-content class="table-container">
+
+    <div *ngIf="appState == 'extend'">
+      <button mat-raised-button="" color="primary" (click)="changeState('default')">BACK</button>
+      <app-detail-view></app-detail-view>
+    </div>
+    <div *ngIf="appState == 'add'">
+      <app-register-contact></app-register-contact>
+    </div>
+    <div *ngIf="appState == 'edit'">
+      <app-update-contact></app-update-contact>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="appState === 'default'">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Company Column -->
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element"> {{element.company}} </td>
+      </ng-container>
+
+      <!-- Category Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <!-- Phone Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef> Phone </th>
+        <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button matTooltip="View Contacts Detail" color="primary" (click)="changeState('extend', element.key)"><mat-icon>view_list</mat-icon></button>
+          <span class="spacer"></span>
+          <button mat-raised-button matTooltip="Edit Contacts" color="accent" (click)="showEdit(element)"><mat-icon>edit</mat-icon></button>
+          <span class="spacer"></span>
+          <button mat-raised-button matTooltip="Delete Contacts" color="warn" (click)="deleteContacts(element.key)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

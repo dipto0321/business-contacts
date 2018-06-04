@@ -1,0 +1,10 @@
+table {
+    width: 100%;
+}
+.spacer{
+    margin-left: 20px;
+}
+.table-container{
+    max-height: 500px;
+    overflow: auto;
+}

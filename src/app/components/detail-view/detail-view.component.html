@@ -1,0 +1,34 @@
+<div *ngFor="let data of _businesses">
+  <div *ngIf="data.key == activeKey">
+    <mat-grid-list [cols]="2" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="detail">
+          <h2>{{data.company}}</h2>
+          <hr>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Category : {{data.category}}</mat-list-item>
+            <mat-list-item role="listitem">Years In Business: {{data.years_in_business}}</mat-list-item>
+          </mat-list>
+          <h5>About</h5>
+          <hr>
+          <p>{{data.description}}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="detail">
+          <h3>Contacts</h3>
+          <hr>
+          <mat-list role="list">
+            <mat-list-item role="listitem">Phone : {{data.phone}}</mat-list-item>
+            <mat-list-item role="listitem">Email : {{data.email}}</mat-list-item>
+            <mat-list-item role="listitem">Street : {{data.street_adress}}</mat-list-item>
+            <mat-list-item role="listitem">City : {{data.city}}</mat-list-item>
+            <mat-list-item role="listitem">State : {{data.state}}</mat-list-item>
+            <mat-list-item role="listitem">Zipcode : {{data.zipcode}}</mat-list-item>
+          </mat-list>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+</div>
