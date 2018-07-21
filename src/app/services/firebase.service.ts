@@ -27,9 +27,9 @@ export class FirebaseService {
 
   getBusinesses(category: string = null) {
     if (category != null) {
-        this.business = this.db.list('/businesses', ref => ref.orderByChild('category').equalTo(category)).snapshotChanges().pipe(
+        this.business = this.itemsRef.snapshotChanges().pipe(
             map(changes =>
-                changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+                changes.map(c => ({ key: c.payload.key, ...c.payload.val() } ))
             )
         );
     } else {}
