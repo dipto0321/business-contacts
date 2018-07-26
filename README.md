@@ -1,6 +1,7 @@
 # BusinessContacts
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+Bussiness Contact Book/ List basically is a web app which could be used for making all business person contact in one place. This app was developed by using Angular 6 also use firebase for storing data. For front-end design, I have used angular material.
 
 ## Development server
 
